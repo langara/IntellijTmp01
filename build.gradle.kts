@@ -44,7 +44,7 @@ dependencies {
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    pluginName = pluginName
+    pluginName = pluginName // FIXME: this looks incorrect
     version = platformVersion
     type = platformType
     downloadSources = platformDownloadSources.toBoolean()

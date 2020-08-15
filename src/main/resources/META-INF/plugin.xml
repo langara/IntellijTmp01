@@ -16,4 +16,11 @@
         <listener class="com.github.langara.intellijtmp01.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </projectListeners>
+
+    <actions>
+        <group id="Tmp01" text="Tmp01" description="Tmp01 test menu">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action class="com.github.langara.intellijtmp01.Tmp01Action01" text="Action01" description="First test action"/>
+        </group>
+    </actions>
 </idea-plugin>
