@@ -10,6 +10,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.langara.intellijtmp01.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.langara.intellijtmp01.services.MyProjectService"/>
+        <toolWindow id="Tool01" anchor="right" factoryClass="com.github.langara.intellijtmp01.TmpWindowFactory"/>
     </extensions>
 
     <projectListeners>
