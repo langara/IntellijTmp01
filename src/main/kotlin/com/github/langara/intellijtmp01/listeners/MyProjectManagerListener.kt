@@ -1,8 +1,8 @@
 package com.github.langara.intellijtmp01.listeners
 
+import com.github.langara.intellijtmp01.services.MyProjectService
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import com.github.langara.intellijtmp01.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 

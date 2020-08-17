@@ -1,7 +1,7 @@
 package com.github.langara.intellijtmp01.services
 
-import com.intellij.openapi.project.Project
 import com.github.langara.intellijtmp01.MyBundle
+import com.intellij.openapi.project.Project
 
 class MyProjectService(project: Project) {
 
