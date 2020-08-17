@@ -13,7 +13,6 @@ import com.intellij.ui.layout.CCFlags
 import com.intellij.ui.layout.GrowPolicy
 import com.intellij.ui.layout.panel
 
-
 val logsModel = CollectionListModel<String>().apply {
     add("First element")
     add("Second element")
@@ -34,6 +33,7 @@ class TmpWindowFactory : ToolWindowFactory {
         }
 
         val somePanel = panel {
+            @Suppress("MagicNumber")
             for (i in 1..10) row { label("rrr $i") }
             row {
                 checkBox("first check box in a row")
@@ -42,6 +42,7 @@ class TmpWindowFactory : ToolWindowFactory {
         }
 
         val otherPanel = panel {
+            @Suppress("MagicNumber")
             for (i in 1..5) row { label("oooooo $i") }
             row {
                 button("first button in a row") { project.notify("First button clicked") }
@@ -61,5 +62,5 @@ class TmpWindowFactory : ToolWindowFactory {
 
 fun Project?.notify(content: String) = Notifications.Bus.notify(notification(content), this)
 
-private fun notification(content: String)
-    = Notification("some group disp id", "some title", content, WARNING)
+private fun notification(content: String) =
+    Notification("some group disp id", "some title", content, WARNING)
