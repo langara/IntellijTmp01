@@ -17,6 +17,11 @@
         <listener class="com.github.langara.intellijtmp01.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </projectListeners>
+    
+    <applicationListeners>
+        <listener class="com.github.langara.intellijtmp01.listeners.MyDynamicPluginListener"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    </applicationListeners>
 
     <actions>
         <group id="Tmp01" text="Tmp01" description="Tmp01 test menu">

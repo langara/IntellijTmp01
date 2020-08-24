@@ -61,6 +61,7 @@ class TmpWindowFactory : ToolWindowFactory {
 }
 
 fun Project?.notify(content: String) = Notifications.Bus.notify(notification(content), this)
+fun notify(content: String) = null.notify(content)
 
 private fun notification(content: String) =
     Notification("some group disp id", "some title", content, WARNING)
