@@ -4,3 +4,8 @@
 formatting:
   Indentation:
     active: true
+style:
+  ForbiddenComment:
+    active: true
+    values: ['FIXME:', 'STOPSHIP:']
+    allowedPatterns: ''
