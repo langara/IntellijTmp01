@@ -4,6 +4,9 @@
 formatting:
   Indentation:
     active: true
+    continuationIndentSize: 8
+  ParameterListWrapping:
+    indentSize: 8
 style:
   ForbiddenComment:
     active: true
