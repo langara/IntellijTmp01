@@ -3,11 +3,11 @@ package com.github.langara.intellijtmp01
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.File
-import java.nio.file.Path
 
 class TakeoutTasksAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
@@ -28,10 +28,10 @@ data class TaskNode(
     val id: String? = null,
     val parent: String? = null,
     val title: String? = null,
-    val task_type: String? = null,
-    val updated: String? = null, // FIXME: datetime? what format? use kotlinx-datetime?
-    val completed: String? = null, // FIXME: datetime? what format? use kotlinx-datetime?
-    val due: String? = null, // FIXME: datetime? what format? use kotlinx-datetime?
+    @SerialName("task_type") val type: String? = null,
+    val updated: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
+    val completed: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
+    val due: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
     val selfLink: String? = null,
     val status: String? = null,
     val items: List<TaskNode> = emptyList(),
