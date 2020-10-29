@@ -48,13 +48,23 @@ internal fun scrapeCovidTables() {
         extract {
             htmlDocument {
                 table {
-                    findAll { map { table ->
-                        table.tr { findAll { map { row ->
-                            row.selection("th, td") { findAll { map { col ->
-                                col.text
-                            } } }
-                        } } }
-                    } }
+                    findAll {
+                        map { table ->
+                            table.tr {
+                                findAll {
+                                    map { row ->
+                                        row.selection("th, td") {
+                                            findAll {
+                                                map { col ->
+                                                    col.text
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

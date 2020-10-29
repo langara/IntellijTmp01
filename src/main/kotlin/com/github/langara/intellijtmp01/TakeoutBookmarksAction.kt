@@ -3,10 +3,6 @@ package com.github.langara.intellijtmp01
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import it.skrape.core.htmlDocument
-import kotlinx.serialization.Serializable
-import org.jsoup.nodes.Element
-import org.jsoup.nodes.Node
-import org.jsoup.nodes.TextNode
 import java.io.File
 
 class TakeoutBookmarksAction : AnAction() {
@@ -21,4 +17,3 @@ class TakeoutBookmarksAction : AnAction() {
 }
 
 private const val PATH = "/home/marek/Downloads/takeout-20201024T122319Z-001/Takeout/Chrome/Bookmarks.html"
-
