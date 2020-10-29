@@ -30,30 +30,6 @@ class TakeoutTasksAction : AnAction() {
 
 private const val PATH = "/home/marek/Downloads/takeout-20201024T122319Z-001/Takeout/Tasks/Tasks.json"
 
-@Serializable
-data class TaskNode(
-    val kind: String,
-    val id: String? = null,
-    val parent: String? = null,
-    val title: String? = null,
-    @SerialName("task_type") val type: String? = null,
-    val updated: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
-    val completed: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
-    val due: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
-    val selfLink: String? = null,
-    val status: String? = null,
-    val items: List<TaskNode> = emptyList(),
-    val links: List<TaskLink> = emptyList(),
-    val notes: String? = null,
-)
-
-@Serializable
-data class TaskLink(
-    val link: String,
-    val type: String? = null,
-    val desc: String? = null,
-)
-
 class TaskMarkdownEncoder : AbstractEncoder() {
 
     override val serializersModule: SerializersModule = EmptySerializersModule

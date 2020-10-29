@@ -43,10 +43,11 @@ repositories {
     maven("https://jitpack.io")
 }
 dependencies {
+    implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.14.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
     implementation("com.github.breandan:kotlingrad:0.3.2")
-    implementation("it.skrape:skrapeit-core:1.0.0-alpha6")
+    implementation("it.skrape:skrapeit-core:1.0.0-alpha8")
 }
 
 // Configure gradle-intellij-plugin plugin.

@@ -30,6 +30,7 @@
             <action class="com.github.langara.intellijtmp01.Tmp01Action02" text="Action02" description="Second test action"/>
             <action class="com.github.langara.intellijtmp01.TakeoutTasksAction" text="Takeout Tasks" description="Import some tasks from Google Takeout"/>
             <action class="com.github.langara.intellijtmp01.TakeoutBookmarksAction" text="Takeout Bookmarks" description="Import some bookmarks from Google Takeout"/>
+            <action class="com.github.langara.intellijtmp01.ScrapeWikipediaCovidAction" text="Scrape Wikipedia Covid" description="Scrape some data from Wikipedia"/>
         </group>
     </actions>
 </idea-plugin>

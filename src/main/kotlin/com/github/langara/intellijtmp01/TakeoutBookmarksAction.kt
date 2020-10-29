@@ -22,29 +22,3 @@ class TakeoutBookmarksAction : AnAction() {
 
 private const val PATH = "/home/marek/Downloads/takeout-20201024T122319Z-001/Takeout/Chrome/Bookmarks.html"
 
-/**
- * Micro HTML tree. Either text should be null or tag should be null.
- * I don't use sealed classes intentionally: It's "micro" (and it's just a hacky experiment)
- */
-@Serializable
-data class UHtml(
-    val text: String? = null,
-    val tag: String? = null,
-    val attrs: Map<String, String> = emptyMap(),
-    val children: List<UHtml> = emptyList(),
-)
-
-private val Element.uhtml: UHtml
-    get() = UHtml(
-        tag = normalName(),
-        attrs = attributes().associate { it.key to it.value },
-        children = childNodes().mapNotNull { it.uhtml }
-    )
-
-private val TextNode.uhtml get() = UHtml(text = text())
-
-private val Node.uhtml get() = when (this) {
-    is TextNode -> uhtml
-    is Element -> uhtml
-    else -> null
-}
