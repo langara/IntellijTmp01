@@ -10,7 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "0.5.1"
+    id("org.jetbrains.intellij") version "0.6.1"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
     id("org.jetbrains.changelog") version "0.6.2"
     // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -45,7 +45,8 @@ repositories {
 dependencies {
     implementation("org.junit.jupiter:junit-jupiter:5.4.2")
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.14.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0")
     implementation("com.github.breandan:kotlingrad:0.3.2")
     implementation("it.skrape:skrapeit-core:1.0.0-alpha8")
 }
