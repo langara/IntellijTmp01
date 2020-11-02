@@ -3,6 +3,7 @@ package com.github.langara.intellijtmp01
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encodeToString
@@ -28,6 +29,7 @@ class TakeoutTasksAction : AnAction() {
 
 private const val PATH = "/home/marek/Downloads/takeout-20201024T122319Z-001/Takeout/Tasks/Tasks.json"
 
+@ExperimentalSerializationApi
 class TaskMarkdownEncoder : AbstractEncoder() {
 
     override val serializersModule: SerializersModule = EmptySerializersModule
@@ -45,6 +47,7 @@ class TaskMarkdownEncoder : AbstractEncoder() {
     }
 }
 
+@ExperimentalSerializationApi
 class ListEncoder : AbstractEncoder() {
     val list = mutableListOf<Any>()
 
