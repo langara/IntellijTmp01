@@ -16,6 +16,7 @@ import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
+import org.junit.Ignore
 import org.junit.Test
 import java.io.DataInput
 import java.io.DataOutput
@@ -23,11 +24,13 @@ import java.io.DataOutput
 internal class ScrapeWikipediaCovidTest {
 
     @Test
+    @Ignore
     fun scrapeCovidTest() {
         scrapeCovidTables()
     }
 
     @Test
+    @Ignore
     fun serializationTest() {
         serializationExample()
     }
