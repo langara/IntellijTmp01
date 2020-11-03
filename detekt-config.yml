@@ -4,6 +4,8 @@
 formatting:
   Indentation:
     active: true
+  NoConsecutiveBlankLines:
+    active: false
 style:
   ForbiddenComment:
     active: true

@@ -2,58 +2,59 @@ package com.github.langara.intellijtmp01
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.ui.Messages
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.encoding.AbstractEncoder
 import kotlinx.serialization.encoding.CompositeEncoder
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.EmptySerializersModule
 import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.serializer
 import java.io.File
 
 class TakeoutTasksAction : AnAction() {
-    override fun actionPerformed(e: AnActionEvent) {
-        val project = e.project!!
-        Messages.showMessageDialog(project, "TODO: Takeout tasks", "Takeout tasks", Messages.getInformationIcon())
-        val file = File(PATH)
-        val text = file.readText()
-        val node = Json.decodeFromString<TaskNode>(text)
-        println(node)
-        val text2 = Json.encodeToString(node)
-        println(TaskNode.serializer().descriptor)
-    }
+    override fun actionPerformed(e: AnActionEvent) = convertTasksToMD()
+}
+
+fun convertTasksToMD() {
+    val text = File(PATH).readText()
+    val node = Json.decodeFromString<TaskNode>(text)
+    File(OUTPATH).writeText(uMdEncodeToString(node))
 }
 
 private const val PATH = "/home/marek/Downloads/takeout-20201024T122319Z-001/Takeout/Tasks/Tasks.json"
+private const val OUTPATH = "/home/marek/gtd/google-tasks-backup.md"
 
-@ExperimentalSerializationApi
-class TaskMarkdownEncoder : AbstractEncoder() {
+@OptIn(ExperimentalSerializationApi::class)
+class UMdEncoder(private val output: StringBuilder) : AbstractEncoder() {
+
+    private var indent = 0
 
     override val serializersModule: SerializersModule = EmptySerializersModule
 
     override fun beginStructure(descriptor: SerialDescriptor): CompositeEncoder {
-        return super.beginStructure(descriptor)
+        encodeValue(descriptor.serialName)
+        indent += WIDTH
+        return this
     }
 
     override fun endStructure(descriptor: SerialDescriptor) {
-        super.endStructure(descriptor)
+        indent -= WIDTH
     }
 
     override fun encodeValue(value: Any) {
-        super.encodeValue(value)
+        output.run {
+            repeat(indent) { append(" ") }
+            append("* $value\n".padStart(indent))
+        }
     }
+
+    override fun encodeNull() = Unit
 }
 
-@ExperimentalSerializationApi
-class ListEncoder : AbstractEncoder() {
-    val list = mutableListOf<Any>()
+private const val WIDTH = 4
 
-    override val serializersModule: SerializersModule = EmptySerializersModule
-
-    override fun encodeValue(value: Any) {
-        list.add(value)
-    }
+inline fun <reified T> uMdEncodeToString(data: T) = buildString {
+    serializer<T>().serialize(UMdEncoder(this), data)
 }

@@ -7,12 +7,13 @@ import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
 
 @Serializable
+@SerialName("Task")
 data class TaskNode(
     val kind: String,
     val id: String? = null,
     val parent: String? = null,
     val title: String? = null,
-    @SerialName("task_type") val type: String? = null,
+    @SerialName("task_type") val taskType: String? = null,
     val updated: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
     val completed: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
     val due: String? = null, // TODO: datetime? what format? use kotlinx-datetime?
@@ -24,6 +25,7 @@ data class TaskNode(
 )
 
 @Serializable
+@SerialName("Link")
 data class TaskLink(
     val link: String,
     val type: String? = null,

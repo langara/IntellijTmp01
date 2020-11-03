@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package com.github.langara.intellijtmp01
 
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -55,7 +57,6 @@ fun serializationExample() {
     println(format.encodeToString(data))
 }
 
-@ExperimentalSerializationApi
 @ExperimentalStdlibApi
 class ListDecoder(val list: ArrayDeque<Any>, var elementsCount: Int = 0) : AbstractDecoder() {
     private var elementIndex = 0
@@ -78,7 +79,6 @@ class ListDecoder(val list: ArrayDeque<Any>, var elementsCount: Int = 0) : Abstr
         decodeInt().also { elementsCount = it }
 }
 
-@ExperimentalSerializationApi
 class DataOutputEncoder(val output: DataOutput) : AbstractEncoder() {
     override val serializersModule: SerializersModule = EmptySerializersModule
     override fun encodeBoolean(value: Boolean) = output.writeByte(if (value) 1 else 0)
@@ -101,7 +101,6 @@ class DataOutputEncoder(val output: DataOutput) : AbstractEncoder() {
     override fun encodeNotNullMark() = encodeBoolean(true)
 }
 
-@ExperimentalSerializationApi
 class DataInputDecoder(val input: DataInput, var elementsCount: Int = 0) : AbstractDecoder() {
     private var elementIndex = 0
     override val serializersModule: SerializersModule = EmptySerializersModule
